@@ -1,0 +1,89 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  /* scrollbar-color: var(--ds-gray-400) var(--ds-background-200); */
+}
+
+/* ::-webkit-scrollbar {
+  height: 16px;
+  width: 16px;
+  overflow: visible;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--ds-gray-400);
+  background-clip: padding-box;
+  border: solid transparent;
+  border-width: 1px 1px 1px 5px;
+  min-height: 28px;
+  padding: 100px 0 0;
+  box-shadow:
+    inset 1px 1px 0 var(--ds-background-200),
+    inset 0 -1px 0 var(--ds-background-200);
+}
+
+::-webkit-scrollbar-button {
+  width: 0;
+  height: 0;
+}
+
+::-webkit-scrollbar-track {
+  background-clip: padding-box;
+  border: solid transparent;
+  border-width: 0 0 0 4px;
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+} */
+
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+svg:not(.standalone) {
+  width: 1em;
+  height: 1em;
+}
+
+svg:not(.standalone) path {
+  fill: currentColor;
+}
+
+button {
+  cursor: pointer;
+}
+
+#root,
+#__next {
+  isolation: isolate;
+}
