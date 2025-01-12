@@ -11,11 +11,7 @@ export default {
       colors: {
         background: "#FEF9EF",
         text: "#423F3C",
-        surface: "#EBE6DE",
-      },
-      fontFamily: {
-        serif: ["Instrument Serif", "serif"],
-        sans: ["Inter", "sans-serif"],
+        surface: "#F4EEE5",
       },
     },
   },
