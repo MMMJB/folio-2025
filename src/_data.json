@@ -1,0 +1,356 @@
+[
+  {
+    "title": "Launch Website",
+    "description": "The official website for Launch.",
+    "tags": [
+      "NextJS",
+      "TailwindCSS",
+      "Typescript",
+      "GSAP",
+      "Nodemailer"
+    ],
+    "startDate": 1696219200000,
+    "endDate": 1721966400000,
+    "status": "complete",
+    "website": "https://launchsite.tech",
+    "work": "Launch",
+    "duration": 25747200000,
+    "layer": 0
+  },
+  {
+    "title": "Launch Dashboard",
+    "description": "A dashboard for Launch clients, complete with analytics, realtime chatting, and website editing.",
+    "tags": [
+      "NextJS",
+      "TailwindCSS",
+      "Typescript",
+      "Convex",
+      "MongoDB"
+    ],
+    "startDate": 1699506000000,
+    "endDate": 1721707200000,
+    "status": "complete",
+    "work": "Launch",
+    "duration": 22201200000,
+    "layer": 1
+  },
+  {
+    "title": "Vars Frtonend",
+    "description": "Competitive 1v1 coding website. Built and designed the entire frontend and integrated with backend.",
+    "tags": [
+      "NextJS",
+      "TailwindCSS",
+      "Vercel",
+      "Supabase"
+    ],
+    "startDate": 1725163200000,
+    "endDate": "Present",
+    "status": "underway",
+    "website": "https://vars.gg",
+    "duration": 11494827782,
+    "layer": 0
+  },
+  {
+    "title": "Code Connect Website",
+    "description": "The official website for Code Connect.",
+    "tags": [
+      "Vite",
+      "ReactJS",
+      "TailwindCSS",
+      "Typescript",
+      "Express",
+      "Nodemailer"
+    ],
+    "startDate": 1693195200000,
+    "endDate": 1703653200000,
+    "status": "complete",
+    "website": "https://code-connect.org",
+    "work": "Code Connect",
+    "duration": 10458000000,
+    "layer": 2
+  },
+  {
+    "title": "Codin Frontend",
+    "description": "A site for creating and sharing tech projects. Built out the entire frontend and integrated with the backend.",
+    "tags": [
+      "NextJS",
+      "TailwindCSS",
+      "Convex",
+      "Typescript",
+      "Stripe"
+    ],
+    "startDate": 1703912400000,
+    "endDate": 1713067200000,
+    "status": "complete",
+    "website": "https://beta.codin.app/",
+    "work": "Codin",
+    "duration": 9154800000,
+    "layer": 2
+  },
+  {
+    "title": "Perceptify App",
+    "description": "A centralized dashboard for Perceptify, featuring auth, data aggregation, and user management.",
+    "tags": [
+      "NextJS",
+      "TailwindCSS",
+      "Supabase",
+      "Typescript"
+    ],
+    "startDate": 1694577600000,
+    "endDate": 1702184400000,
+    "status": "abandoned",
+    "work": "Perceptify",
+    "duration": 7606800000,
+    "layer": 3
+  },
+  {
+    "title": "Launched",
+    "description": "An NPM package to make any website editable. It enables freelance clients to modify their websites with zero codebase access or programming experience necessary.",
+    "tags": [
+      "ReactJS",
+      "Typescript",
+      "NodeJS",
+      "Rollup"
+    ],
+    "startDate": 1715659200000,
+    "endDate": 1722484800000,
+    "status": "abandoned",
+    "github": "https://github.com/launchsite-tech/launched",
+    "work": "Launch",
+    "duration": 6825600000,
+    "layer": 2
+  },
+  {
+    "title": "Word Flip",
+    "description": "A gamepidgeon-inspired word game. My first fullstack project, complete with auth and online play. The website is no longer up, but the chrome extension is.",
+    "tags": [
+      "AWS",
+      "OAuth",
+      "Javascript",
+      "CSS",
+      "HTML"
+    ],
+    "startDate": 1660622400000,
+    "endDate": 1665892800000,
+    "status": "complete",
+    "website": "https://chromewebstore.google.com/detail/word-flip-a-word-hunting/plmejbcifcjpekepadkikegiimhgkfka",
+    "duration": 5270400000,
+    "layer": 0
+  },
+  {
+    "title": "The World Debates",
+    "description": "A promotional website for The World Debates, a debating organization for high schoolers.",
+    "tags": [
+      "NextJS",
+      "TailwindCSS",
+      "Typescript",
+      "GSAP",
+      "Nodemailer"
+    ],
+    "startDate": 1697860800000,
+    "endDate": 1701579600000,
+    "status": "complete",
+    "website": "https://theworlddebates.launched.tech",
+    "work": "Launch",
+    "duration": 3718800000,
+    "layer": 4
+  },
+  {
+    "title": "Blank Page",
+    "description": "A promotional website for Blank Page, a non-profit tech organization based in India.",
+    "tags": [
+      "NextJS",
+      "TailwindCSS",
+      "Typescript"
+    ],
+    "startDate": 1699506000000,
+    "endDate": 1702270800000,
+    "status": "complete",
+    "website": "https://blankpage.launched.tech",
+    "work": "Launch",
+    "duration": 2764800000,
+    "layer": 5
+  },
+  {
+    "title": "Quilli",
+    "description": "A document creation tool made to improve the poetry writing workflow. My introduction to ReactJS and my first fullstack project.",
+    "tags": [
+      "Vite",
+      "Firebase",
+      "Socket.io",
+      "ReactJS",
+      "TailwindCSS"
+    ],
+    "startDate": 1688270400000,
+    "endDate": 1690689600000,
+    "status": "abandoned",
+    "github": "https://github.com/MMMJB/Quilli-react",
+    "duration": 2419200000,
+    "layer": 0
+  },
+  {
+    "title": "CVE",
+    "description": "A promotional website for Central Valley Endocrinology, a medical practice in California.",
+    "tags": [
+      "NextJS",
+      "TailwindCSS",
+      "Typescript"
+    ],
+    "startDate": 1719720000000,
+    "endDate": 1721707200000,
+    "status": "complete",
+    "website": "https://cve.launched.tech",
+    "work": "Launch",
+    "duration": 1987200000,
+    "layer": 3
+  },
+  {
+    "title": "Perceptify Website",
+    "description": "A promotional website for Perceptify. A complete rehaul of the original site's branding and design.",
+    "tags": [
+      "NextJS",
+      "TailwindCSS",
+      "MongoDB",
+      "Typescript",
+      "Resend"
+    ],
+    "startDate": 1706331600000,
+    "endDate": 1707627600000,
+    "status": "complete",
+    "website": "https://joinperceptify.com",
+    "work": "Perceptify",
+    "duration": 1296000000,
+    "layer": 3
+  },
+  {
+    "title": "Theme Palette Generator",
+    "description": "A website that generates a color palette from a theme using the singleton pattern.",
+    "tags": [
+      "Vite",
+      "Javascript",
+      "CSS",
+      "HTML"
+    ],
+    "startDate": 1667707200000,
+    "endDate": 1668574800000,
+    "status": "complete",
+    "github": "https://github.com/MMMJB/Theme-Palette",
+    "duration": 867600000,
+    "layer": 0
+  },
+  {
+    "title": "Github README Stats",
+    "description": "A serverless API for dynamically generating github language stats.",
+    "tags": [
+      "Vercel",
+      "NodeJS",
+      "Express"
+    ],
+    "startDate": 1692676800000,
+    "endDate": 1693368000000,
+    "status": "complete",
+    "github": "https://github.com/MMMJB/MMMJB",
+    "website": "https://mmmjb.vercel.app/api/generate?type=both&user=MMMJB&theme=dark&exclude=quill&recursive=1&title=",
+    "duration": 691200000,
+    "layer": 0
+  },
+  {
+    "title": "Boids",
+    "description": "A simple simulation of bird flocking behavior made in processing.",
+    "tags": [
+      "Processing"
+    ],
+    "status": "complete",
+    "startDate": 1641531600000,
+    "endDate": 1642136400000,
+    "duration": 604800000,
+    "layer": 0
+  },
+  {
+    "title": "Lexily",
+    "description": "A web app that assesses a reading levels through adaptive testing. Developed in five days for DualHacks 2023, receiving 5th place in the advanced pool.",
+    "tags": [
+      "Vite",
+      "ReactJS",
+      "TailwindCSS",
+      "Flask",
+      "OpenAI"
+    ],
+    "startDate": 1691035200000,
+    "endDate": 1691640000000,
+    "status": "complete",
+    "github": "https://github.com/AnSingh1/Lexily",
+    "website": "https://devpost.com/software/lexily",
+    "duration": 432000000,
+    "layer": 0
+  },
+  {
+    "title": "Bean Counter",
+    "description": "A simple webb app for keeping count of day-to-day tasks. Made for my dad, who wanted to track his water intake.",
+    "tags": [
+      "Vite",
+      "Firebase",
+      "ReactJS",
+      "TailwindCSS"
+    ],
+    "startDate": 1693713600000,
+    "endDate": 1694318400000,
+    "status": "complete",
+    "github": "https://github.com/MMMJB/counter",
+    "website": "https://beancounter.vercel.app",
+    "duration": 432000000,
+    "layer": 0
+  },
+  {
+    "title": "PagePal",
+    "description": "A web app that generates quizzes about a book's content. Developed in three days for TechOptimum Hacks 2023, receiving 4th place in the advanced pool.",
+    "tags": [
+      "Vite",
+      "ReactJS",
+      "TailwindCSS",
+      "Flask",
+      "OpenAI",
+      "BeautifulSoup"
+    ],
+    "startDate": 1692936000000,
+    "endDate": 1693540800000,
+    "status": "complete",
+    "github": "https://github.com/AnSingh1/PagePal",
+    "website": "https://devpost.com/software/PagePal",
+    "duration": 172800000,
+    "layer": 1
+  },
+  {
+    "title": "CSHS AI Demo",
+    "description": "A flappy bird clone controleld by hand gestures. Made in ~2 hours for a computer science event at a local elementary school.",
+    "tags": [
+      "Vite",
+      "Typescript",
+      "TensorflowJS"
+    ],
+    "startDate": 1712613600000,
+    "endDate": 1713218400000,
+    "status": "complete",
+    "github": "https://github.com/MMMJB/CSHS-central-project/tree/motion-tracking",
+    "website": "https://cshs-central-project.vercel.app/",
+    "duration": 7200000,
+    "layer": 3
+  },
+  {
+    "title": "Launched Docs",
+    "description": "Documentation for the Launched NPM package. My first time using Docusaurus with MDX.",
+    "tags": [
+      "Docusaurus",
+      "MDX",
+      "ReactJS",
+      "Typescript"
+    ],
+    "startDate": 1723176000000,
+    "endDate": 1723780800000,
+    "status": "abandoned",
+    "github": "https://github.com/launchsite-tech/launched/tree/docs/docs",
+    "work": "Launch",
+    "duration": -691200000,
+    "layer": 0
+  }
+]
