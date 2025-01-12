@@ -231,6 +231,25 @@ export class Timeline {
     }
   }
 
+  private drawCursor(startPos: number, endPos: number, mx?: number) {
+    if (mx === undefined) return;
+
+    if (mx > startPos && mx < this.w * 0.75) {
+      this.c.strokeStyle = TRACK_FILL_COLOR;
+    } else if (mx > this.w * 0.75 && mx < endPos) {
+      this.c.strokeStyle = TRACK_COLOR;
+    } else {
+      this.c.strokeStyle = UNFILLED_TRACK_COLOR;
+    }
+
+    this.c.lineWidth = 1;
+    this.c.beginPath();
+    this.c.moveTo(mx, this.h / 2 - 82);
+    this.c.lineTo(mx, this.h / 2 + 12);
+    this.c.stroke();
+    this.c.closePath();
+  }
+
   private drawDebug(delta: number) {
     const windowWidth = Math.max(this.w / (PX_PER_SECOND * this.scale));
 
@@ -270,6 +289,7 @@ export class Timeline {
     this.drawTicks(startPos, endPos);
     this.drawTrack(startPos, endPos);
     this.drawEvents();
+    this.drawCursor(startPos, endPos, mx);
     this.drawProgress(startPos, endPos);
 
     if (this.debug) this.drawDebug(dt);
