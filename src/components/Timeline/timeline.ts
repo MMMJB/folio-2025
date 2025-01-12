@@ -285,7 +285,9 @@ export class Timeline {
     this.lastFrameTime = now;
 
     if (this.scale !== this.targetScale) {
-      this.scale = lerp(this.scale, this.targetScale, 0.1);
+      const SCALE_FACTOR = 0.008;
+      const alpha = clamp(dt * SCALE_FACTOR, 0, 1);
+      this.scale = lerp(this.scale, this.targetScale, alpha);
       this.computeWindow();
     }
 
