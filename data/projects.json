@@ -10,7 +10,7 @@
     "work": "Launch"
   },
   {
-    "title": "Vars Frtonend",
+    "title": "Vars Frontend",
     "description": "Competitive 1v1 coding website. Built and designed the entire frontend and integrated with backend.",
     "tags": ["NextJS", "TailwindCSS", "Vercel", "Supabase"],
     "startDate": 1725163200000,
