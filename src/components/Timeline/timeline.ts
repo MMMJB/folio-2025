@@ -260,17 +260,17 @@ export class Timeline {
     const windowWidth = Math.max(this.w / (PX_PER_SECOND * this.scale));
 
     this.c.font = "12px monospace";
-    this.c.textAlign = "left";
+    this.c.textAlign = "right";
     this.c.fillStyle = "#000";
-    this.c.fillText(`Scale: ${this.scale.toFixed(8)}`, 10, 20);
-    this.c.fillText(`Window span: ${windowWidth.toFixed(2)}s`, 10, 40);
+    this.c.fillText(`Scale: ${this.scale.toFixed(8)}`, this.w - 10, 20);
+    this.c.fillText(`Window span: ${windowWidth.toFixed(2)}s`, this.w - 10, 40);
     this.c.fillText(
       `Tick interval: ${this.intervalValue}ms (${this.intervalScale})`,
-      10,
+      this.w - 10,
       60,
     );
-    this.c.fillText(`Render time: ${delta.toFixed(2)}ms`, 10, 80);
-    this.c.fillText(`t: ${this.t.toFixed(2)}ms`, 10, 100);
+    this.c.fillText(`Render time: ${delta.toFixed(2)}ms`, this.w - 10, 80);
+    this.c.fillText(`t: ${this.t.toFixed(2)}ms`, this.w - 10, 100);
   }
 
   public draw(timestamp?: number, mx?: number, my?: number) {
@@ -307,5 +307,9 @@ export class Timeline {
     this.w = newWidth;
     this.h = newHeight;
     this.computeWindow();
+  }
+
+  public toggleDebug() {
+    this.debug = !this.debug;
   }
 }
