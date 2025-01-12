@@ -9,6 +9,7 @@ export default function Timeline() {
   const w = useRef<number>(0);
   const h = useRef<number>(0);
   const mx = useRef<number>(0);
+  const my = useRef<number>(0);
 
   useEffect(() => {
     if (!canvasRef.current) return;
@@ -35,6 +36,7 @@ export default function Timeline() {
 
     function onMouseMove(e: MouseEvent) {
       mx.current = e.clientX;
+      my.current = e.clientY;
     }
 
     onResize();
@@ -43,7 +45,7 @@ export default function Timeline() {
     const render = (timestamp?: number) => {
       ctx.clearRect(0, 0, w.current, h.current);
 
-      timeline.draw(timestamp, mx.current);
+      timeline.draw(timestamp, mx.current, my.current);
 
       animationFrame = requestAnimationFrame(render);
     };
@@ -60,5 +62,7 @@ export default function Timeline() {
     };
   }, []);
 
-  return <canvas ref={canvasRef} className="h-1/2 w-full" />;
+  return (
+    <canvas ref={canvasRef} className="absolute -left-40 top-0 h-full w-1/3" />
+  );
 }

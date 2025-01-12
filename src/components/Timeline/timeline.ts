@@ -6,6 +6,7 @@ import events from "@/_data.json";
 import { getMaximumTimestepForDuration } from "@/utils/timestep";
 
 const PX_PER_SECOND = 5; // 1s = 5px
+const PROGRESS = 0.8;
 const UNFILLED_TRACK_COLOR = "#EBE6DE50";
 const TRACK_COLOR = "#EBE6DE";
 const TRACK_FILL_COLOR = "#423F3C";
@@ -39,7 +40,7 @@ export class Timeline {
   private debug: boolean = false;
 
   private scale: number = 9e-4;
-  private targetScale: number = 4e-6;
+  private targetScale: number = 3e-6;
   private c: CanvasRenderingContext2D;
   private w: number;
   private h: number;
@@ -64,12 +65,12 @@ export class Timeline {
   }
 
   private computeWindow() {
-    const windowDuration = Math.max(this.w / (PX_PER_SECOND * this.scale)); // Span of window in seconds
-    const start = now - windowDuration * 0.75 * 1000; // 75% of the window duration
+    const windowDuration = Math.max(this.h / (PX_PER_SECOND * this.scale)); // Span of window in seconds
+    const start = now - windowDuration * PROGRESS * 1000; // progress% of the window duration
 
     const [interval, scale] = getMaximumTimestepForDuration(
       windowDuration * 1000,
-      20,
+      10,
     );
 
     this.windowStart = start;
@@ -77,9 +78,9 @@ export class Timeline {
     this.intervalValue = interval;
   }
 
-  private getXForTimestamp(timestamp: number): number {
+  private getYForTimestamp(timestamp: number): number {
     const relativeTime = timestamp - this.windowStart;
-    return (relativeTime / 1000) * PX_PER_SECOND * this.scale;
+    return this.h - (relativeTime / 1000) * PX_PER_SECOND * this.scale;
   }
 
   private onScroll(e: WheelEvent) {
@@ -92,18 +93,18 @@ export class Timeline {
   private drawTrack(startPos: number, endPos: number) {
     this.c.lineWidth = 2;
 
-    if (startPos > 0 || endPos < this.w) {
+    if (startPos < this.h || endPos > 0) {
       this.c.strokeStyle = UNFILLED_TRACK_COLOR;
       this.c.beginPath();
-      this.c.moveTo(0, this.h / 2);
-      this.c.lineTo(this.w, this.h / 2);
+      this.c.moveTo(this.w / 2, this.h);
+      this.c.lineTo(this.w / 2, 0);
       this.c.stroke();
     }
 
     this.c.strokeStyle = TRACK_COLOR;
     this.c.beginPath();
-    this.c.moveTo(Math.max(0, startPos), this.h / 2);
-    this.c.lineTo(Math.min(this.w, endPos), this.h / 2);
+    this.c.moveTo(this.w / 2, Math.min(this.h, startPos));
+    this.c.lineTo(this.w / 2, Math.max(0, endPos));
     this.c.stroke();
   }
 
@@ -111,95 +112,95 @@ export class Timeline {
     // Draw progress line
     this.c.strokeStyle = TRACK_FILL_COLOR;
     this.c.beginPath();
-    this.c.moveTo(startPos, this.h / 2);
-    this.c.lineTo(this.w * 0.75, this.h / 2);
+    this.c.moveTo(this.w / 2, startPos);
+    this.c.lineTo(this.w / 2, this.h * (1 - PROGRESS));
     this.c.stroke();
 
     // Draw progress tail
     this.c.beginPath();
-    this.c.moveTo(startPos, this.h / 2 - 4);
-    this.c.lineTo(startPos, this.h / 2 + 4);
+    this.c.moveTo(this.w / 2 - 4, startPos);
+    this.c.lineTo(this.w / 2 + 4, startPos);
     this.c.stroke();
 
     // Draw endpoint
     this.c.strokeStyle = TRACK_COLOR;
     this.c.beginPath();
-    this.c.moveTo(endPos, this.h / 2 - 4);
-    this.c.lineTo(endPos, this.h / 2 + 4);
+    this.c.moveTo(this.w / 2 - 4, endPos);
+    this.c.lineTo(this.w / 2 + 4, endPos);
     this.c.stroke();
 
     // Draw progress head
     this.c.lineWidth = 7;
     this.c.fillStyle = TRACK_FILL_COLOR;
     this.c.beginPath();
-    this.c.arc(this.w * 0.75, this.h / 2, 6, 0, Math.PI * 2);
+    this.c.arc(this.w / 2, this.h * (1 - PROGRESS), 6, 0, Math.PI * 2);
     this.c.fill();
     this.c.stroke();
   }
 
   private drawTick(
-    x: number,
-    startX: number,
-    endX: number,
+    y: number,
+    startY: number,
+    endY: number,
     size: number = 12,
     label?: string,
   ) {
-    if (x < 0.75 * this.w && x > startX) {
+    if (y > (1 - PROGRESS) * this.h && y < startY) {
       this.c.strokeStyle = TRACK_FILL_COLOR;
-    } else if (x > 0.75 && x < endX) {
+    } else if (y > endY) {
       this.c.strokeStyle = TRACK_COLOR;
     } else {
       this.c.strokeStyle = UNFILLED_TRACK_COLOR;
     }
 
     this.c.beginPath();
-    this.c.moveTo(x, this.h / 2 - size);
-    this.c.lineTo(x, this.h / 2 + size);
+    this.c.moveTo(this.w / 2 - size, y);
+    this.c.lineTo(this.w / 2 + size, y);
     this.c.closePath();
     this.c.stroke();
 
-    if (label && x < 0.75 * this.w) {
-      const distanceToStart = this.w * 0.75 - x;
+    if (label && y > (1 - PROGRESS) * this.h) {
+      const distanceToStart = y - this.h * (1 - PROGRESS);
 
       this.c.save();
       this.c.globalAlpha = distanceToStart / this.w;
       this.c.fillStyle = TRACK_FILL_COLOR;
       this.c.font = "14px Instrument Serif";
-      this.c.fillText(label, x + 2, this.h / 2 + size + 16);
+      this.c.fillText(label, this.w / 2 - size - 16, y + 2);
       this.c.restore();
     }
   }
 
-  private drawTicks(startX: number, endX: number) {
+  private drawTicks(startY: number, endY: number) {
     this.c.lineWidth = 1;
-    this.c.textAlign = "center";
+    this.c.textAlign = "right";
 
     const timestep = (this.intervalValue / 1000) * PX_PER_SECOND * this.scale;
     const offset =
       ((this.t % this.intervalValue) / 1000) * PX_PER_SECOND * this.scale;
-    const start = 0.75 * this.w - offset;
-
-    // Draw ticks to left of current time
-    let x = start;
-    let i = 0;
-
-    while (x > 0) {
-      i++;
-
-      this.drawTick(x, startX, endX, 12, `${i - 1}${this.intervalScale} ago`);
-      x -= timestep / 2;
-      this.drawTick(x, startX, endX, 6);
-      x -= timestep / 2;
-    }
+    const start = this.h * (1 - PROGRESS) + offset;
 
     // Draw ticks to right of current time
-    x = start;
+    let y = start;
+    let i = 0;
 
-    while (x < this.w) {
-      this.drawTick(x, startX, endX);
-      x += timestep / 2;
-      this.drawTick(x, startX, endX, 6);
-      x += timestep / 2;
+    while (y < this.h) {
+      i++;
+
+      this.drawTick(y, startY, endY, 12, `${i - 1}${this.intervalScale} ago`);
+      y += timestep / 2;
+      this.drawTick(y, startY, endY, 6);
+      y += timestep / 2;
+    }
+
+    // Draw ticks to left of current time
+    y = start;
+
+    while (y > 0) {
+      this.drawTick(y, startY, endY);
+      y -= timestep / 2;
+      this.drawTick(y, startY, endY, 6);
+      y -= timestep / 2;
     }
   }
 
@@ -211,8 +212,8 @@ export class Timeline {
     for (let i = 0; i < eventData.length; i++) {
       const event = eventData[i];
 
-      const startPos = this.getXForTimestamp(event.startDate);
-      const endPos = this.getXForTimestamp(event.endDate);
+      const startPos = this.getYForTimestamp(event.startDate);
+      const endPos = this.getYForTimestamp(event.endDate);
 
       if (startPos < 0 && endPos < 0) continue;
 
@@ -225,18 +226,23 @@ export class Timeline {
       }
 
       this.c.beginPath();
-      this.c.moveTo(startPos, this.h / 2 - (event.layer + 1) * 10 - 12);
-      this.c.lineTo(endPos, this.h / 2 - (event.layer + 1) * 10 - 12);
+      this.c.moveTo(this.w / 2 + (event.layer + 1) * 10 + 12, startPos);
+      this.c.lineTo(this.w / 2 + (event.layer + 1) * 10 + 12, endPos);
       this.c.stroke();
     }
   }
 
-  private drawCursor(startPos: number, endPos: number, mx?: number) {
-    if (mx === undefined) return;
+  private drawCursor(
+    startPos: number,
+    endPos: number,
+    mx?: number,
+    my?: number,
+  ) {
+    if (mx === undefined || my === undefined) return;
 
-    if (mx > startPos && mx < this.w * 0.75) {
+    if (my < startPos && my > this.h * (1 - PROGRESS)) {
       this.c.strokeStyle = TRACK_FILL_COLOR;
-    } else if (mx > this.w * 0.75 && mx < endPos) {
+    } else if (my < this.h * (1 - PROGRESS) && my > endPos) {
       this.c.strokeStyle = TRACK_COLOR;
     } else {
       this.c.strokeStyle = UNFILLED_TRACK_COLOR;
@@ -244,8 +250,8 @@ export class Timeline {
 
     this.c.lineWidth = 1;
     this.c.beginPath();
-    this.c.moveTo(mx, this.h / 2 - 82);
-    this.c.lineTo(mx, this.h / 2 + 12);
+    this.c.moveTo(this.w / 2 + 82, my);
+    this.c.lineTo(this.w / 2 - 12, my);
     this.c.stroke();
     this.c.closePath();
   }
@@ -267,7 +273,7 @@ export class Timeline {
     this.c.fillText(`t: ${this.t.toFixed(2)}ms`, 10, 100);
   }
 
-  public draw(timestamp?: number, mx?: number) {
+  public draw(timestamp?: number, mx?: number, my?: number) {
     const now = timestamp || Date.now();
     let dt = 0;
 
@@ -279,17 +285,17 @@ export class Timeline {
     this.lastFrameTime = now;
 
     if (this.scale !== this.targetScale) {
-      this.scale = lerp(this.scale, this.targetScale, 0.01);
+      this.scale = lerp(this.scale, this.targetScale, 0.1);
       this.computeWindow();
     }
 
-    const startPos = this.getXForTimestamp(startDate);
-    const endPos = this.getXForTimestamp(endDate);
+    const startPos = this.getYForTimestamp(startDate);
+    const endPos = this.getYForTimestamp(endDate);
 
     this.drawTicks(startPos, endPos);
     this.drawTrack(startPos, endPos);
     this.drawEvents();
-    this.drawCursor(startPos, endPos, mx);
+    // this.drawCursor(startPos, endPos, mx, my);
     this.drawProgress(startPos, endPos);
 
     if (this.debug) this.drawDebug(dt);

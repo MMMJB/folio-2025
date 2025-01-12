@@ -3,8 +3,9 @@ import Work from "@/components/Work/Index";
 
 export default function Home() {
   return (
-    <div className="flex size-full flex-col">
-      <main className="flex flex-grow flex-col items-center justify-end gap-6">
+    <div className="size-full">
+      <Timeline />
+      <main className="flex size-full flex-col items-center justify-center gap-6">
         <h1 className="text-center text-8xl/[125px]">Michael Beck</h1>
         <div className="flex gap-8">
           <Work
@@ -52,7 +53,6 @@ export default function Home() {
           </Work>
         </div>
       </main>
-      <Timeline />
     </div>
   );
 }
