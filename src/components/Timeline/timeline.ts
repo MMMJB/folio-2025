@@ -38,16 +38,16 @@ const eventData = events.map((event) => ({
 export class Timeline {
   private debug: boolean = false;
 
-  private scale: number = 4e-6;
-  private targetScale: number = this.scale;
+  private scale: number = 9e-4;
+  private targetScale: number = 4e-6;
   private c: CanvasRenderingContext2D;
   private w: number;
   private h: number;
   private t: number = 0;
   private lastFrameTime: number = 0;
   private windowStart: number = 0;
-  private intervalValue: number = 1000 * 60 * 60 * 24 * 365; // 1 year
-  private intervalScale: Timestep = "y";
+  private intervalValue: number = 1000 * 60;
+  private intervalScale: Timestep = "s";
 
   // TODO: cache points?
 
