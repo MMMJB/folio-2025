@@ -193,7 +193,7 @@ export class Timeline {
     while (y < this.h) {
       i++;
 
-      this.drawTick(y, startY, endY, 12, `${i - 1}${this.intervalScale} ago`);
+      this.drawTick(y, startY, endY, 12, `${i}${this.intervalScale} ago`);
       y += timestep / 2;
       this.drawTick(y, startY, endY, 6);
       y += timestep / 2;
@@ -212,6 +212,7 @@ export class Timeline {
 
   private drawEvents(mx?: number, my?: number) {
     // this.c.lineCap = "round";
+    this.c.lineWidth = 2;
 
     for (let i = 0; i < eventData.length; i++) {
       const event = eventData[i];
@@ -251,25 +252,19 @@ export class Timeline {
               window.open(event.website ?? event.github, "_blank");
             };
           }
-
-          this.events.emit("hover", {
-            event,
-            x: x + 5,
-            y: endPos,
-          });
         }
+
+        this.events.emit("hover", {
+          event,
+          x: x + 5,
+          y: my,
+        });
       } else if (this.hoveredEvent === event.title) {
         this.c.canvas.style.cursor = "default";
         this.c.canvas.onclick = null;
         this.hoveredEvent = null;
 
         this.events.emit("hover", null);
-      }
-
-      if (this.hoveredEvent === event.title) {
-        this.c.lineWidth = 3;
-      } else {
-        this.c.lineWidth = 2;
       }
 
       this.c.beginPath();
