@@ -131,7 +131,7 @@ export default function Timeline() {
   }, []);
 
   return (
-    <div className="absolute top-0 h-full w-1/3 lg:-left-32 xl:-left-20">
+    <div className="absolute top-0 h-full w-1/3">
       <canvas ref={canvasRef} className="size-full" />
       <Project data={hoveredEvent} x={hoverX} y={hoverY} />
     </div>

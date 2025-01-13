@@ -1,9 +1,11 @@
 import Timeline from "@/components/Timeline";
 import Work from "@/components/Work/Index";
+import Loader from "@/components/Loader";
 
 export default function Home() {
   return (
     <div className="size-full">
+      <Loader />
       <Timeline />
       <main className="flex size-full flex-col items-center justify-center gap-6 lg:ml-32 xl:ml-20">
         <h1 className="text-center text-8xl/[125px]">Michael Beck</h1>
