@@ -19,7 +19,7 @@ const startDate = new Date("2007-05-25T14:23:42Z").getTime();
 const now = Date.now();
 const endDate = startDate + 1000 * 60 * 60 * 24 * 365 * 80; // 80 years later
 
-interface EventData {
+export interface EventData {
   title: string;
   description: string;
   startDate: number;
@@ -27,6 +27,7 @@ interface EventData {
   tags: string[];
   status: "underway" | "abandoned" | "complete";
   layer: number;
+  thumbnail?: string;
   github?: string;
   website?: string;
   work?: string;
@@ -242,24 +243,31 @@ export class Timeline {
         mx < x + 5
       ) {
         if (this.hoveredEvent !== event.title) {
-          this.c.canvas.style.cursor = "pointer";
           this.hoveredEvent = event.title;
+
+          if (event.website || event.github) {
+            this.c.canvas.style.cursor = "pointer";
+            this.c.canvas.onclick = () => {
+              window.open(event.website ?? event.github, "_blank");
+            };
+          }
 
           this.events.emit("hover", {
             event,
             x: x + 5,
-            y: startPos,
+            y: endPos,
           });
         }
       } else if (this.hoveredEvent === event.title) {
         this.c.canvas.style.cursor = "default";
+        this.c.canvas.onclick = null;
         this.hoveredEvent = null;
 
         this.events.emit("hover", null);
       }
 
       if (this.hoveredEvent === event.title) {
-        this.c.lineWidth = 4;
+        this.c.lineWidth = 3;
       } else {
         this.c.lineWidth = 2;
       }
