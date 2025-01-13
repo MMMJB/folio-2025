@@ -7,6 +7,7 @@
     "endDate": 1722484800000,
     "status": "abandoned",
     "github": "https://github.com/launchsite-tech/launched",
+    "thumbnail": "launched.png",
     "work": "Launch"
   },
   {
@@ -16,7 +17,9 @@
     "startDate": 1725163200000,
     "endDate": "Present",
     "status": "underway",
-    "website": "https://vars.gg"
+    "website": "https://vars.gg",
+    "thumbnail": "vars.png",
+    "work": "vars"
   },
   {
     "title": "Quilli",
@@ -25,7 +28,8 @@
     "startDate": 1688270400000,
     "endDate": 1690689600000,
     "status": "abandoned",
-    "github": "https://github.com/MMMJB/Quilli-react"
+    "github": "https://github.com/MMMJB/Quilli-react",
+    "thumbnail": "quilli.png"
   },
   {
     "title": "Word Flip",
@@ -34,7 +38,8 @@
     "startDate": 1660622400000,
     "endDate": 1665892800000,
     "status": "complete",
-    "website": "https://chromewebstore.google.com/detail/word-flip-a-word-hunting/plmejbcifcjpekepadkikegiimhgkfka"
+    "website": "https://chromewebstore.google.com/detail/word-flip-a-word-hunting/plmejbcifcjpekepadkikegiimhgkfka",
+    "thumbnail": "wordflip.png"
   },
   {
     "title": "PagePal",
@@ -51,7 +56,8 @@
     "endDate": 1693108800000,
     "status": "complete",
     "github": "https://github.com/AnSingh1/PagePal",
-    "website": "https://devpost.com/software/PagePal"
+    "website": "https://devpost.com/software/PagePal",
+    "thumbnail": "pagepal.png"
   },
   {
     "title": "Lexily",
@@ -61,7 +67,8 @@
     "endDate": 1691467200000,
     "status": "complete",
     "github": "https://github.com/AnSingh1/Lexily",
-    "website": "https://devpost.com/software/lexily"
+    "website": "https://devpost.com/software/lexily",
+    "thumbnail": "lexily.png"
   },
   {
     "title": "CSHS AI Demo",
@@ -71,7 +78,8 @@
     "endDate": 1712620800000,
     "status": "complete",
     "github": "https://github.com/MMMJB/CSHS-central-project/tree/motion-tracking",
-    "website": "https://cshs-central-project.vercel.app/"
+    "website": "https://cshs-central-project.vercel.app/",
+    "thumbnail": "cshsai.png"
   },
   {
     "title": "Github README Stats",
@@ -81,7 +89,8 @@
     "endDate": 1693368000000,
     "status": "complete",
     "github": "https://github.com/MMMJB/MMMJB",
-    "website": "https://mmmjb.vercel.app/api/generate?type=both&user=MMMJB&theme=dark&exclude=quill&recursive=1&title="
+    "website": "https://mmmjb.vercel.app/api/generate?type=both&user=MMMJB&theme=dark&exclude=quill&recursive=1&title=",
+    "thumbnail": "githubstats.png"
   },
   {
     "title": "Bean Counter",
@@ -91,7 +100,8 @@
     "endDate": 1694145600000,
     "status": "complete",
     "github": "https://github.com/MMMJB/counter",
-    "website": "https://beancounter.vercel.app"
+    "website": "https://beancounter.vercel.app",
+    "thumbnail": "beancounter.png"
   },
   {
     "title": "Theme Palette Generator",
@@ -100,7 +110,8 @@
     "startDate": 1667707200000,
     "endDate": 1668574800000,
     "status": "complete",
-    "github": "https://github.com/MMMJB/Theme-Palette"
+    "github": "https://github.com/MMMJB/Theme-Palette",
+    "thumbnail": "themepalette.png"
   },
   {
     "title": "Perceptify App",
@@ -109,6 +120,7 @@
     "startDate": 1694577600000,
     "endDate": 1702184400000,
     "status": "abandoned",
+    "thumbnail": "perceptifyapp.png",
     "work": "Perceptify"
   },
   {
@@ -119,6 +131,7 @@
     "endDate": 1707627600000,
     "status": "complete",
     "website": "https://joinperceptify.com",
+    "thumbnail": "perceptifysite.png",
     "work": "Perceptify"
   },
   {
@@ -129,6 +142,7 @@
     "endDate": 1713067200000,
     "status": "complete",
     "website": "https://beta.codin.app/",
+    "thumbnail": "codin.png",
     "work": "Codin"
   },
   {
@@ -139,6 +153,7 @@
     "endDate": 1722484800000,
     "status": "abandoned",
     "github": "https://github.com/launchsite-tech/launched/tree/docs/docs",
+    "thumbnail": "launcheddocs.png",
     "work": "Launch"
   },
   {
@@ -149,6 +164,7 @@
     "endDate": 1721966400000,
     "status": "complete",
     "website": "https://launchsite.tech",
+    "thumbnail": "launchsite.png",
     "work": "Launch"
   },
   {
@@ -158,6 +174,7 @@
     "startDate": 1699506000000,
     "endDate": 1721707200000,
     "status": "complete",
+    "thumbnail": "launchdashboard.png",
     "work": "Launch"
   },
   {
@@ -167,7 +184,8 @@
     "startDate": 1697860800000,
     "endDate": 1701579600000,
     "status": "complete",
-    "website": "https://theworlddebates.launched.tech",
+    "website": "https://the-world-debates-pfcbw2yq4-launch-tech.vercel.app/",
+    "thumbnail": "twd.png",
     "work": "Launch"
   },
   {
@@ -177,7 +195,7 @@
     "startDate": 1719720000000,
     "endDate": 1721707200000,
     "status": "complete",
-    "website": "https://cve.launched.tech",
+    "thumbnail": "cve.png",
     "work": "Launch"
   },
   {
@@ -187,7 +205,7 @@
     "startDate": 1699506000000,
     "endDate": 1702270800000,
     "status": "complete",
-    "website": "https://blankpage.launched.tech",
+    "thumbnail": "blankpage.png",
     "work": "Launch"
   },
   {
@@ -205,6 +223,7 @@
     "endDate": 1703653200000,
     "status": "complete",
     "website": "https://code-connect.org",
+    "thumbnail": "codeconnect.png",
     "work": "Code Connect"
   },
   {
@@ -213,6 +232,7 @@
     "tags": ["Processing"],
     "status": "complete",
     "startDate": 1641531600000,
-    "endDate": 1642136400000
+    "endDate": 1642136400000,
+    "thumbnail": "boids.gif"
   }
 ]
