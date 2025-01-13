@@ -31,6 +31,7 @@ export default function Timeline() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const w = useRef<number>(0);
   const h = useRef<number>(0);
+  const dpr = useRef<number>(1);
   const mx = useRef<number>(0);
   const my = useRef<number>(0);
   const offsetX = useRef<number>(0);
@@ -45,23 +46,19 @@ export default function Timeline() {
   const onResize = useCallback(() => {
     if (!canvasRef.current) return;
 
-    const { devicePixelRatio: dpr } = window;
-
     const { width, height, left, top } =
       canvasRef.current.getBoundingClientRect();
-    w.current = canvasRef.current.width = width * dpr;
-    h.current = canvasRef.current.height = height * dpr;
-    offsetX.current = left * dpr;
-    offsetY.current = top * dpr;
+    w.current = canvasRef.current.width = width * dpr.current;
+    h.current = canvasRef.current.height = height * dpr.current;
+    offsetX.current = left * dpr.current;
+    offsetY.current = top * dpr.current;
 
     timeline.current?.updateDimensions(w.current, h.current);
   }, []);
 
   const onMouseMove = useCallback((e: MouseEvent) => {
-    const { devicePixelRatio: dpr } = window;
-
-    mx.current = e.clientX * dpr - offsetX.current;
-    my.current = e.clientY * dpr - offsetY.current;
+    mx.current = e.clientX * dpr.current - offsetX.current;
+    my.current = e.clientY * dpr.current - offsetY.current;
   }, []);
 
   const onKeyDown = useCallback((e: KeyboardEvent) => {
@@ -85,8 +82,8 @@ export default function Timeline() {
   const onHover = useCallback((event: HoverEventData) => {
     if (event !== null) {
       setHoveredEvent(event.event);
-      setHoverX(event.x);
-      setHoverY(event.y);
+      setHoverX(event.x / dpr.current);
+      setHoverY(event.y / dpr.current);
     } else {
       setHoveredEvent(null);
     }
@@ -97,8 +94,9 @@ export default function Timeline() {
 
     const ctx = canvasRef.current.getContext("2d");
     if (!ctx) throw new Error("2D context not supported");
-    const { devicePixelRatio: dpr } = window;
-    ctx.scale(dpr, dpr);
+
+    dpr.current = 1;
+    ctx.scale(dpr.current, dpr.current);
 
     timeline.current = new T(ctx, w.current, h.current);
 
