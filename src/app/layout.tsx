@@ -18,7 +18,7 @@ export default function RootLayout({
       lang="en"
       className={`text-text h-full bg-background ${instrumentSerif.className}`}
     >
-      <body className="h-full">{children}</body>
+      <body className="h-full overflow-hidden">{children}</body>
     </html>
   );
 }
