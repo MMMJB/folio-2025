@@ -15,6 +15,7 @@ const COMPLETE_EVENT_COLOR = "#BE6A52";
 const UNDERWAY_EVENT_COLOR = COMPLETE_EVENT_COLOR;
 const ABANDONED_EVENT_COLOR = TRACK_COLOR;
 const MAX_SCALE_RATIO = 2;
+const TICK_STEPS = 10;
 
 const startDate = new Date("2007-05-25T14:23:42Z").getTime();
 const now = Date.now();
@@ -55,8 +56,6 @@ export class Timeline {
 
   public events: EventEmitter = new EventEmitter();
 
-  // TODO: cache points?
-
   constructor(
     ctx: CanvasRenderingContext2D,
     ctxWidth: number,
@@ -75,7 +74,7 @@ export class Timeline {
 
     const [interval, scale] = getMaximumTimestepForDuration(
       windowDuration * 1000,
-      10,
+      TICK_STEPS,
     );
 
     this.windowStart = start;

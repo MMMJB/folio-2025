@@ -7,7 +7,7 @@ export default function Home() {
     <div className="size-full">
       <Loader />
       <Timeline />
-      <main className="flex size-full flex-col items-center justify-center gap-6 lg:ml-32 xl:ml-20">
+      <main className="flex size-full flex-col items-center justify-center gap-6">
         <h1 className="text-center text-8xl/[125px]">Michael Beck</h1>
         <div className="flex gap-8">
           <Work
