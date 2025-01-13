@@ -7,13 +7,14 @@ import EventEmitter from "events";
 import { getMaximumTimestepForDuration } from "@/utils/timestep";
 
 const PX_PER_SECOND = 5; // 1s = 5px
-const PROGRESS = 0.8;
+export const PROGRESS = 0.8;
 const UNFILLED_TRACK_COLOR = "#EBE6DE50";
-const TRACK_COLOR = "#EBE6DE";
-const TRACK_FILL_COLOR = "#423F3C";
+export const TRACK_COLOR = "#EBE6DE";
+export const TRACK_FILL_COLOR = "#423F3C";
 const COMPLETE_EVENT_COLOR = "#BE6A52";
 const UNDERWAY_EVENT_COLOR = COMPLETE_EVENT_COLOR;
 const ABANDONED_EVENT_COLOR = TRACK_COLOR;
+const MAX_SCALE_RATIO = 2;
 
 const startDate = new Date("2007-05-25T14:23:42Z").getTime();
 const now = Date.now();
@@ -89,8 +90,16 @@ export class Timeline {
 
   private onScroll(e: WheelEvent) {
     const delta = e.deltaY > 0 ? 0.9 : 1.1;
-    this.targetScale *= delta;
-    this.targetScale = clamp(this.targetScale, 1e-8, 150);
+    const proposedTargetScale = this.targetScale * delta;
+
+    // Clamp the absolute value
+    const clampedTargetScale = clamp(proposedTargetScale, 1e-8, 150);
+
+    // Clamp the relative change based on current scale
+    const maxScale = this.scale * MAX_SCALE_RATIO;
+    const minScale = this.scale / MAX_SCALE_RATIO;
+
+    this.targetScale = clamp(clampedTargetScale, minScale, maxScale);
     this.computeWindow();
   }
 
@@ -118,22 +127,26 @@ export class Timeline {
     // Draw progress line
     this.c.strokeStyle = TRACK_FILL_COLOR;
     this.c.beginPath();
-    this.c.moveTo(this.w / 2, startPos);
+    this.c.moveTo(this.w / 2, Math.min(startPos, this.h));
     this.c.lineTo(this.w / 2, this.h * (1 - PROGRESS));
     this.c.stroke();
 
     // Draw progress tail
-    this.c.beginPath();
-    this.c.moveTo(this.w / 2 - 4, startPos);
-    this.c.lineTo(this.w / 2 + 4, startPos);
-    this.c.stroke();
+    if (startPos < this.h) {
+      this.c.beginPath();
+      this.c.moveTo(this.w / 2 - 4, startPos);
+      this.c.lineTo(this.w / 2 + 4, startPos);
+      this.c.stroke();
+    }
 
     // Draw endpoint
     this.c.strokeStyle = TRACK_COLOR;
-    this.c.beginPath();
-    this.c.moveTo(this.w / 2 - 4, endPos);
-    this.c.lineTo(this.w / 2 + 4, endPos);
-    this.c.stroke();
+    if (endPos > 0) {
+      this.c.beginPath();
+      this.c.moveTo(this.w / 2 - 4, endPos);
+      this.c.lineTo(this.w / 2 + 4, endPos);
+      this.c.stroke();
+    }
 
     // Draw progress head
     this.c.lineWidth = 7;
@@ -220,7 +233,7 @@ export class Timeline {
       const startPos = this.getYForTimestamp(event.startDate);
       const endPos = this.getYForTimestamp(event.endDate);
 
-      if (startPos < 0 && endPos < 0) continue;
+      if (startPos > this.h && endPos > this.h) continue;
 
       if (event.status === "underway") {
         this.c.strokeStyle = UNDERWAY_EVENT_COLOR;
@@ -268,7 +281,7 @@ export class Timeline {
       }
 
       this.c.beginPath();
-      this.c.moveTo(x, startPos);
+      this.c.moveTo(x, Math.min(startPos, this.h));
       this.c.lineTo(x, endPos);
       this.c.stroke();
     }
