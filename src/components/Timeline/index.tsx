@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useCallback } from "react";
 
 import { Timeline as T } from "./timeline";
 
@@ -24,7 +24,50 @@ export default function Timeline() {
   const h = useRef<number>(0);
   const mx = useRef<number>(0);
   const my = useRef<number>(0);
+  const offsetX = useRef<number>(0);
+  const offsetY = useRef<number>(0);
   const keyPosition = useRef<number>(0);
+  const timeline = useRef<T | null>(null);
+
+  const onResize = useCallback(() => {
+    if (!canvasRef.current) return;
+
+    const { devicePixelRatio: dpr } = window;
+
+    const { width, height, left, top } =
+      canvasRef.current.getBoundingClientRect();
+    w.current = canvasRef.current.width = width * dpr;
+    h.current = canvasRef.current.height = height * dpr;
+    offsetX.current = left * dpr;
+    offsetY.current = top * dpr;
+
+    timeline.current?.updateDimensions(w.current, h.current);
+  }, []);
+
+  const onMouseMove = useCallback((e: MouseEvent) => {
+    const { devicePixelRatio: dpr } = window;
+
+    mx.current = e.clientX * dpr - offsetX.current;
+    my.current = e.clientY * dpr - offsetY.current;
+  }, []);
+
+  const onKeyDown = useCallback((e: KeyboardEvent) => {
+    if (!timeline.current) return;
+
+    const key = e.key.toLowerCase();
+    const expectedKey = debugKey[keyPosition.current];
+
+    if (key === expectedKey) {
+      keyPosition.current++;
+    } else {
+      keyPosition.current = 0;
+    }
+
+    if (keyPosition.current === debugKey.length) {
+      timeline.current.toggleDebug();
+      keyPosition.current = 0;
+    }
+  }, []);
 
   useEffect(() => {
     if (!canvasRef.current) return;
@@ -34,41 +77,7 @@ export default function Timeline() {
     const { devicePixelRatio: dpr } = window;
     ctx.scale(dpr, dpr);
 
-    w.current = window.innerWidth;
-    h.current = window.innerHeight;
-
-    const timeline = new T(ctx, w.current, h.current);
-
-    function onResize() {
-      if (!canvasRef.current) return;
-
-      const { width, height } = canvasRef.current.getBoundingClientRect();
-      w.current = canvasRef.current.width = width * dpr;
-      h.current = canvasRef.current.height = height * dpr;
-
-      timeline.updateDimensions(w.current, h.current);
-    }
-
-    function onMouseMove(e: MouseEvent) {
-      mx.current = e.clientX;
-      my.current = e.clientY;
-    }
-
-    function onKeyDown(e: KeyboardEvent) {
-      const key = e.key.toLowerCase();
-      const expectedKey = debugKey[keyPosition.current];
-
-      if (key === expectedKey) {
-        keyPosition.current++;
-      } else {
-        keyPosition.current = 0;
-      }
-
-      if (keyPosition.current === debugKey.length) {
-        timeline.toggleDebug();
-        keyPosition.current = 0;
-      }
-    }
+    timeline.current = new T(ctx, w.current, h.current);
 
     onResize();
 
@@ -76,7 +85,7 @@ export default function Timeline() {
     const render = (timestamp?: number) => {
       ctx.clearRect(0, 0, w.current, h.current);
 
-      timeline.draw(timestamp, mx.current, my.current);
+      timeline.current!.draw(timestamp, mx.current, my.current);
 
       animationFrame = requestAnimationFrame(render);
     };
@@ -97,6 +106,9 @@ export default function Timeline() {
   }, []);
 
   return (
-    <canvas ref={canvasRef} className="absolute -left-40 top-0 h-full w-1/3" />
+    <canvas
+      ref={canvasRef}
+      className="absolute top-0 h-full w-1/3 lg:-left-32 xl:-left-20"
+    />
   );
 }
