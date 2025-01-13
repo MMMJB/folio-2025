@@ -10,8 +10,7 @@ const instrumentSerif = Instrument_Serif({
 
 export const metadata = {
   title: "Michael Beck",
-  description:
-    "I'm Michael Beck, a 17-year-old frontend developer from East Brunswick, New Jersey. Here's my personal website.",
+  description: "Always building.",
 };
 
 export default function RootLayout({
