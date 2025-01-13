@@ -16,7 +16,7 @@ export default function Work({
       rel="noopener noreferrer"
       target="_blank"
       href={href}
-      className="bg-surface flex h-36 w-48 flex-col rounded-md px-2 py-1.5"
+      className="bg-surface flex h-36 w-48 flex-col rounded-md px-2 py-1.5 transition-opacity hover:opacity-75"
     >
       <div
         role="img"

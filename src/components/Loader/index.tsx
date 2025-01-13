@@ -27,7 +27,7 @@ export default function Loader() {
       }}
       className="fixed inset-0 z-50 -translate-x-12 bg-background transition-opacity duration-500"
     >
-      <div className="flex h-full w-1/3 justify-center">
+      <div className="hidden h-full w-1/3 justify-center lg:flex">
         <div
           className="relative h-full w-0.5"
           style={{

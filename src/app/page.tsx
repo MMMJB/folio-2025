@@ -7,9 +7,11 @@ export default function Home() {
     <div className="size-full">
       <Loader />
       <Timeline />
-      <main className="flex size-full flex-col items-center justify-center gap-6">
-        <h1 className="text-center text-8xl/[125px]">Michael Beck</h1>
-        <div className="flex gap-8">
+      <main className="flex size-full flex-col items-center justify-center gap-6 lg:ml-12 xl:ml-0">
+        <h1 className="text-center text-6xl sm:text-8xl/[125px]">
+          Michael Beck
+        </h1>
+        <div className="flex flex-wrap justify-center gap-4 px-12 sm:gap-8">
           <Work
             name="vars"
             href="https://vars.gg"
