@@ -1,6 +1,8 @@
 import "../styles/reset.css";
 import "../styles/globals.css";
 
+import { CSPostHogProvider } from "@/providers/PHProvider";
+
 import { Instrument_Serif } from "next/font/google";
 
 const instrumentSerif = Instrument_Serif({
@@ -21,12 +23,14 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`text-text h-full bg-background ${instrumentSerif.className}`}
+      className={`h-full bg-background text-text ${instrumentSerif.className}`}
     >
       <head>
         <meta name="apple-mobile-web-app-title" content="MJB" />
       </head>
-      <body className="h-full overflow-hidden">{children}</body>
+      <CSPostHogProvider>
+        <body className="h-full overflow-hidden">{children}</body>
+      </CSPostHogProvider>
     </html>
   );
 }
