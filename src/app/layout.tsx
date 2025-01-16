@@ -2,6 +2,7 @@ import "../styles/reset.css";
 import "../styles/globals.css";
 
 import { CSPostHogProvider } from "@/providers/PHProvider";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 import { Instrument_Serif } from "next/font/google";
 
@@ -31,6 +32,9 @@ export default function RootLayout({
       <CSPostHogProvider>
         <body className="h-full overflow-hidden">{children}</body>
       </CSPostHogProvider>
+      {process.env.NODE_ENV === "production" && (
+        <GoogleAnalytics gaId="G-16987K38P8" />
+      )}
     </html>
   );
 }
