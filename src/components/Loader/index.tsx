@@ -25,7 +25,7 @@ export default function Loader() {
         opacity: loading ? 1 : 0,
         pointerEvents: loading ? "auto" : "none",
       }}
-      className="fixed inset-0 z-50 -translate-x-12 bg-background transition-opacity duration-500"
+      className="fixed inset-0 z-50 -translate-x-20 bg-background transition-opacity duration-500"
     >
       <div className="hidden h-full w-1/3 justify-center lg:flex">
         <div
