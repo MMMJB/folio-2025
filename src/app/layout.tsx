@@ -4,9 +4,14 @@ import "../styles/globals.css";
 import { CSPostHogProvider } from "@/providers/PHProvider";
 import { GoogleAnalytics } from "@next/third-parties/google";
 
-import { Instrument_Serif } from "next/font/google";
+import { Instrument_Sans, Instrument_Serif } from "next/font/google";
 
-const instrumentSerif = Instrument_Serif({
+const sans = Instrument_Sans({
+  subsets: ["latin"],
+  weight: ["400"],
+});
+
+const serif = Instrument_Serif({
   subsets: ["latin"],
   weight: ["400"],
 });
@@ -22,10 +27,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`h-full bg-background text-text ${instrumentSerif.className}`}
-    >
+    <html lang="en" className="h-full bg-background text-text">
       <head>
         <meta name="apple-mobile-web-app-title" content="MJB" />
       </head>

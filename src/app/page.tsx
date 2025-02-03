@@ -37,7 +37,7 @@ function SwapLetter({
 
 export default function Home() {
   return (
-    <div className="size-full">
+    <div className="size-full font-serif">
       <Loader />
       <Timeline />
       <main className="ml-0 flex size-full flex-col items-center justify-center gap-6 lg:ml-20">

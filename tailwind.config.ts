@@ -15,7 +15,12 @@ export default {
         background: "#FEF9EF",
         text: "#423F3C",
         surface: "#F4EEE5",
+        highlight: "#BE6A52",
       },
+    },
+    fontFamily: {
+      sans: ["Instrument Sans", "sans-serif"],
+      serif: ["Instrument Serif", "serif"],
     },
   },
   plugins: [],
