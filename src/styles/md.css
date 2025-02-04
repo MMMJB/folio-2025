@@ -1,0 +1,173 @@
+body {
+  --bg: theme("colors.background");
+  --grid-dark: rgba(0, 0, 0, 0.015);
+  --grid-light: rgba(0, 0, 0, 0.01);
+
+  scrollbar-color: rgba(0, 0, 0, 0.15) theme("colors.background");
+  background: linear-gradient(-90deg, var(--grid-dark) 1px, transparent 1px),
+    linear-gradient(var(--grid-dark) 1px, transparent 1px),
+    linear-gradient(-90deg, var(--grid-light) 1px, transparent 1px),
+    linear-gradient(var(--grid-light) 1px, transparent 1px),
+    linear-gradient(
+      transparent 3px,
+      var(--bg) 3px,
+      var(--bg) 78px,
+      transparent 78px
+    ),
+    linear-gradient(-90deg, var(--grid-dark) 1px, transparent 1px),
+    linear-gradient(
+      -90deg,
+      transparent 3px,
+      var(--bg) 3px,
+      var(--bg) 78px,
+      transparent 78px
+    ),
+    linear-gradient(var(--grid-dark) 1px, transparent 1px), var(--bg);
+  background-size:
+    4px 4px,
+    4px 4px,
+    80px 80px,
+    80px 80px,
+    80px 80px,
+    80px 80px,
+    80px 80px,
+    80px 80px;
+}
+
+article {
+  font-size: 1rem;
+  color: theme("colors.text");
+}
+
+p,
+ul,
+ol {
+  margin-block: 1rem;
+}
+
+h1 {
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  font-size: 2.75rem;
+  line-height: 3rem;
+  font-family: "Instrument serif", serif;
+}
+
+h2 {
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 600;
+}
+
+h2 + *:not(h2) {
+  margin-top: 0;
+}
+
+h3 {
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: 600;
+}
+
+ul {
+  list-style: disc;
+}
+
+ol {
+  list-style: decimal;
+}
+
+ul,
+ol {
+  padding-left: 1.5rem;
+}
+
+li {
+  margin-block: 0.25rem;
+  padding-left: 0.5rem;
+}
+
+hr {
+  border-color: currentColor;
+  opacity: 0.2;
+  margin-block: 3rem;
+}
+
+p > code {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  border-radius: 0.25rem;
+  padding: 0.125rem 0.25rem;
+  border: 1px solid currentColor;
+}
+
+pre {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  border-radius: 0.25rem;
+  background-color: theme("colors.surface");
+  border: 1px solid theme("colors.border");
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+pre > code {
+  background: transparent !important;
+}
+
+blockquote {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  margin-block: 1.5rem;
+  border-radius: 0.25rem;
+  background-color: theme("colors.surface");
+  border: 1px solid theme("colors.border");
+  padding: 0.5rem 1rem;
+}
+
+blockquote > p {
+  margin-block: 0.5rem;
+}
+
+a {
+  color: theme("colors.highlight");
+  text-decoration: underline;
+  text-underline-offset: 0.125rem;
+}
+
+img,
+figure {
+  border-radius: 0.25rem;
+}
+
+figure,
+video,
+p:has(img) {
+  margin-top: 1.5rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  background-color: theme("colors.surface");
+  border: 1px solid theme("colors.border");
+}
+
+/* Figure-specific */
+
+.key::after {
+  content: "";
+  position: absolute;
+  background: var(--highlight);
+  opacity: 0.25;
+  inset: -0.2rem -0.125rem;
+}
+
+.key:first-of-type::after {
+  inset-inline-start: -0.2rem;
+}
+
+.key:last-of-type::after {
+  inset-inline-end: -0.2rem;
+}

@@ -16,6 +16,7 @@ export default {
         text: "#423F3C",
         surface: "#F4EEE5",
         highlight: "#BE6A52",
+        border: "rgba(0, 0, 0, 0.05)",
       },
     },
     fontFamily: {

@@ -6,11 +6,13 @@ import { GoogleAnalytics } from "@next/third-parties/google";
 
 import { Instrument_Sans, Instrument_Serif } from "next/font/google";
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const sans = Instrument_Sans({
   subsets: ["latin"],
-  weight: ["400"],
+  weight: ["400", "500", "600"],
 });
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const serif = Instrument_Serif({
   subsets: ["latin"],
   weight: ["400"],

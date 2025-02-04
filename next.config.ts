@@ -1,6 +1,8 @@
 import type { NextConfig } from "next";
 
 import createMDX from "@next/mdx";
+import rehypeHighlight from "rehype-highlight";
+import rehypeVideo from "rehype-video";
 
 const nextConfig: NextConfig = {
   /* config options here */
@@ -8,7 +10,9 @@ const nextConfig: NextConfig = {
 };
 
 const withMDX = createMDX({
-  extension: /\.mdx?$/,
+  options: {
+    rehypePlugins: [rehypeHighlight, rehypeVideo],
+  },
 });
 
 export default withMDX(nextConfig);
